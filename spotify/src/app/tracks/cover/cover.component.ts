@@ -10,4 +10,8 @@ import { ICover } from '../../i-tracks';
 })
 export class CoverComponent {
   coverInfo: InputSignal<ICover | undefined> = input.required<ICover | undefined>();
+
+  get artistList(): string {
+    return this.coverInfo()?.artists.map(artist => artist.name).join(', ') || '';
+  }
 }

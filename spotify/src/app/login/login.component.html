@@ -19,9 +19,16 @@
             [class.is-valid]="loginForm.controls['password'].valid">
             <div class="invalid-feedback">Password non può essere vuota.</div>
         </div>
-        <div class="row mt-3">
-            <button class="btn btn-primary" type="submit" [disabled]="!loginForm.valid">Accedi</button>
-            <button class="btn btn-danger" type="button">Annulla</button>
+        <div class="row mb-5">
+            <div class="d-flex gap-3 mt-5 justify-content-center align-items-center">            
+                <button class="btn btn-primary w-25" type="submit" [disabled]="!loginForm.valid">Accedi</button>                        
+                <button class="btn btn-danger w-25" type="button">Annulla</button>            
+            </div>
         </div>
+        @if(errorFeedback()) {
+            <div class="alert alert-danger mt-5" role="alert">
+                Username o password errati.
+            </div>
+        }
     </form>
 </div>

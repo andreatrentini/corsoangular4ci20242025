@@ -20,9 +20,14 @@
             <a class="nav-link" routerLink="/credits" routerLinkActive="active">Credits</a>
           </li>                    
         </ul>
-        <form class="d-flex" role="search">          
-          <a class="btn btn-outline-success" type="submit" routerLink="/login" routerLinkActive="active">Login</a>
-        </form>
+        <div class="d-flex">          
+          @if(loginOk()) {
+            <a class="btn btn-outline-danger" type="submit" routerLink="/logout" routerLinkActive="active">Logout</a>
+          }
+          @else {
+            <a class="btn btn-outline-success" type="submit" routerLink="/login" routerLinkActive="active">Login</a>
+          }
+        </div>
       </div>
     </div>
   </nav>

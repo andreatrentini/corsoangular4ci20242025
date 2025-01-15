@@ -7,12 +7,14 @@ import { AlbumsComponent } from './albums/albums.component';
 import { NotFoundComponent } from './not-found/not-found.component';
 import { tokenOkGuard } from './token-ok.guard';
 import { TracksComponent } from './tracks/tracks.component';
+import { LogoutComponent } from './logout/logout.component';
 
 export const routes: Routes = [
     {path: '', component: HomeComponent},
     {path: 'search', component: SearchComponent, canActivate: [tokenOkGuard]},
     {path: 'credits', component: CreditsComponent},
     {path: 'login', component: LoginComponent},
+    {path: 'logout', component: LogoutComponent},
     {path: 'albums/:id', component: AlbumsComponent, canActivate: [tokenOkGuard]},
     {path: 'tracks/:id', component: TracksComponent, canActivate: [tokenOkGuard]},
     {path: '**', component: NotFoundComponent}
