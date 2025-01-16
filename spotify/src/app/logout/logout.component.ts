@@ -1,5 +1,6 @@
 import { Component, inject } from '@angular/core';
 import { LoginService } from '../login.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-logout',
@@ -9,5 +10,14 @@ import { LoginService } from '../login.service';
   styleUrl: './logout.component.css'
 })
 export class LogoutComponent {
-  loginService: LoginService = inject(LoginService);
+  private loginService: LoginService = inject(LoginService);
+  private router: Router = inject(Router);
+
+  logout(): void {
+    this.loginService.logout();
+  }
+
+  annulla(): void {
+    this.router.navigateByUrl('/');
+  }
 }

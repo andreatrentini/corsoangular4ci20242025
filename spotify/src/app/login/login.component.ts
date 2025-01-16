@@ -1,6 +1,7 @@
 import { Component, inject, Signal } from '@angular/core';
 import { FormControl, FormGroup, ReactiveFormsModule, Validators } from '@angular/forms';
 import { LoginService } from '../login.service';
+import { Router } from '@angular/router';
 
 @Component({
   selector: 'app-login',
@@ -11,8 +12,10 @@ import { LoginService } from '../login.service';
 })
 export class LoginComponent {
 
-  loginService: LoginService = inject(LoginService);
+  private loginService: LoginService = inject(LoginService);
   errorFeedback: Signal<boolean> = this.loginService.errorFeedback;
+
+  private router: Router = inject(Router);
 
   loginForm: FormGroup = new FormGroup({
     username: new FormControl('', Validators.required),
@@ -22,5 +25,9 @@ export class LoginComponent {
   login(): void {
     this.loginService.login(this.loginForm.value);
     
+  }
+
+  annulla(): void {
+    this.router.navigateByUrl('/');
   }
 }
